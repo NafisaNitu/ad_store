@@ -64,18 +64,37 @@
                             </li>
                         </ul>
                      </div>
- 
-                     <div class="d-lg-block ml-3 mr-0">
+
+                    @if (Route::has('login'))
                         <ul class="list-inline mb-0 mobile-hor-swipe text-center">
+                            @auth
                             <li class="list-inline-item mr-0 py-1">
                                 <a
-                                    href="#"
+                                    href="{{ url('/dashboard') }}"
                                     class="ad-menu px-2 py-2 d-inline-block text-reset">
-                                    <span class="menu-text-hover">My Account</span>
+                                    <span class="menu-text-hover">Dashboard</span>
                                 </a>
                             </li>
+                            @else
+                            <li class="list-inline-item mr-0 py-1">
+                                <a
+                                    href="{{ route('login') }}"
+                                    class="ad-menu px-2 py-2 d-inline-block text-reset">
+                                    <span class="menu-text-hover">Login</span>
+                                </a>
+                            </li>
+                            @if (Route::has('register'))
+                            <li class="list-inline-item mr-0 py-1">
+                                <a
+                                    href="{{ route('register') }}"
+                                    class="ad-menu px-2 py-2 d-inline-block text-reset">
+                                    <span class="menu-text-hover">Register</span>
+                                </a>
+                            </li>
+                            @endif
+                            @endauth
                         </ul>
-                     </div>
+                        @endif
                      <div class="d-lg-block ml-3 mr-0">
                          <ul class="list-inline mb-0 mobile-hor-swipe text-center">
                              <li class="list-inline-item mr-0">
