@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +21,22 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
+//Frontent Section
 Route::get('/',[HomeController::class,'index']);
 Route::get('/adstore',[HomeController::class,'adstore'])->name('adstore');
 
+//Backend Section
 Route::get('/dashboard', function () {
     return view('backend.pages.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+    // sales ads
+Route::middleware('auth')->group(function(){
+    Route::get('/sale-add',[SaleController::class,'index'])->name('sale.add');
+    Route::post('/sale-add',[SaleController::class,'store'])->name('sale.store');
+    Route::get('/sale-manage',[SaleController::class,'manage'])->name('sale.manage');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
