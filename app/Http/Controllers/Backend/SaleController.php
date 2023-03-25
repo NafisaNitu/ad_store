@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
-    public function index(){
-        return view('backend.pages.sales.add');
-    }
 
-    public function manage(){
+    public function index(){
         $sales = Sale::all();
         return view('backend.pages.sales.manage',compact('sales'));
+    }
+    public function create(){
+        return view('backend.pages.sales.add');
     }
 
     public function store(SaleAdStoreRequest $request){

@@ -18,8 +18,8 @@
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i><span>Sales</span></a>
                         <ul class="collapse">
-                            <li><a href="{{ route('sale.add') }}">Add New Sale Ad</a></li>
-                            <li><a href="{{ route('sale.manage') }}">All Sale Ads</a></li>
+                            <li><a href="{{ route('sale-add.index') }}">Add New Sale Ad</a></li>
+                            <li><a href="{{ route('sale-add.create') }}">All Sale Ads</a></li>
                         </ul>
                     </li>
                     {{-- <li>

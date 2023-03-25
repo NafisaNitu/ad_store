@@ -32,9 +32,10 @@ Route::get('/dashboard', function () {
 
     // sales ads
 Route::middleware('auth')->group(function(){
-    Route::get('/sale-add',[SaleController::class,'index'])->name('sale.add');
-    Route::post('/sale-add',[SaleController::class,'store'])->name('sale.store');
-    Route::get('/sale-manage',[SaleController::class,'manage'])->name('sale.manage');
+    Route::resource('sale-add',SaleController::class);
+    // Route::get('/sale-add',[SaleController::class,'index'])->name('sale.add');
+    // Route::post('/sale-add',[SaleController::class,'store'])->name('sale.store');
+    // Route::get('/sale-manage',[SaleController::class,'manage'])->name('sale.manage');
 });
 
 
