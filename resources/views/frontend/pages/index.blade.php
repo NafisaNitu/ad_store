@@ -109,9 +109,11 @@
                                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                         @foreach ($ad_stores_data as $item)
                                             <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
+                                                <div class="header-banner">
                                                 <a href="">
-                                                    <img src="{{ $item['photo'] }}" alt="">
+                                                    <img src="{{ $item['photo'] }}" alt="" style="width:100%; height: 100%">
                                                 </a>
+                                                </div>
                                             </div>
                                         @endforeach
 
