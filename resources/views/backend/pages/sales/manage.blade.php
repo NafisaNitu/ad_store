@@ -21,11 +21,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($sales as $sale)
+                                        
                                         <tr>
-                                            <td>1</td>
-                                            <td>Product</td>
-                                            <td>Mobile</td>
-                                            <td>img</td>
+                                            <td>{{ $loop->index +1 }}</td>
+                                            <td>{{$sale->name}}</td>
+                                            <td>{{$sale->type}}</td>
+                                            <td>{{$sale->image}}</td>
+                                            
                                             <td>
                                                 <ul class="d-flex justify-content-center">
                                                     <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
@@ -33,6 +36,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
+                                        @endforeach
                                        
                                     </tbody>
                                 </table>

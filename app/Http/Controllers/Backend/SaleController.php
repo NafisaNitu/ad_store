@@ -13,7 +13,8 @@ class SaleController extends Controller
     }
 
     public function manage(){
-        return view('backend.pages.sales.manage');
+        $sales = Sale::all();
+        return view('backend.pages.sales.manage',compact('sales'));
     }
 
     public function store(Request $request){
@@ -36,6 +37,6 @@ class SaleController extends Controller
         $sale->description = $request->description;        
         $sale->save(); 
 
-        return redirect('sale.manage');
+        return back();
     }
 }
