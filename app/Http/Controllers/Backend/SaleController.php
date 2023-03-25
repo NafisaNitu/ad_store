@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaleAdStoreRequest;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -17,18 +18,7 @@ class SaleController extends Controller
         return view('backend.pages.sales.manage',compact('sales'));
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'type' => 'required',
-            'name' => 'required',
-            'description' => 'nullable',
-            'image' => 'nullable|image',
-        ],
-        [
-            'type.required' => 'Please provide a sale product type',
-            'name.required' => 'Please provide a sale product name',
-            'image.image' => 'Please provide a valid image with .jpg, .png, .gif, .jpeg extension'
-        ]);
+    public function store(SaleAdStoreRequest $request){
        
         $sale = new Sale();
         $sale->type = $request->type;
