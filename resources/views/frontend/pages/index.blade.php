@@ -107,20 +107,22 @@
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-item active">
-                                            <a href="">
-                                                <img src="{{ asset('frontend/assets/images/ad.jpg') }}" alt=""
-                                                    class="banner1">
-                                            </a>
-                                        </div>
+                                        @foreach ($ad_stores_data as $item)
+                                            <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
+                                                <a href="">
+                                                    <img src="{{ $item['photo'] }}" alt="">
+                                                </a>
+                                            </div>
+                                        @endforeach
 
-                                        <div class="carousel-item">
+
+                                        {{-- <div class="carousel-item">
                                             <a href="">
                                                 <img src="{{ asset('frontend/assets/images/banner7.png') }}"
                                                     alt="" class="banner1">
                                             </a>
 
-                                        </div>
+                                        </div> --}}
 
                                     </div>
                                     <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
@@ -195,7 +197,7 @@
                                     </div>
                                 @endforeach
 
-                              
+
                             </div>
                         </div>
                     </div>
@@ -206,17 +208,17 @@
                         <div class="bbb_viewed_slider_container">
                             <div class="owl-carousel owl-theme bbb_viewed_slider_2 d-flex">
                                 @foreach ($advertisement_data as $item)
-                                <div class="owl-item">
-                                    <div
-                                        class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="bbb_viewed_image-2">
-                                            <img src="{{ $item['photo'] }}" alt="">
+                                    <div class="owl-item">
+                                        <div
+                                            class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="bbb_viewed_image-2">
+                                                <img src="{{ $item['photo'] }}" alt="">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
