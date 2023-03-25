@@ -24,7 +24,7 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/adstore',[HomeController::class,'adstore'])->name('adstore');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('backend.pages.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
