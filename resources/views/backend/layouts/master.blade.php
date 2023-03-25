@@ -10,15 +10,13 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
     
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- preloader area start -->
-=======
-  
->>>>>>> d7d2721a0983b9099ddd4bab60bea9d05d83e558
+
     <div id="preloader">
         <div class="loader"></div>
     </div>
