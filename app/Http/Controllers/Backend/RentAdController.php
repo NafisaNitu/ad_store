@@ -41,7 +41,7 @@ class RentAdController extends Controller
             $image = $request->file('image');
             $img = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/rent_ad/'.$img);
-            Image::make($image)->resize(570, 230)->save($location);
+            Image::make($image)->resize(570, 230)->save($location); 
 
             $rent_add = new RentAd();
             $rent_add->type = $request->type;
