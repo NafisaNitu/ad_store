@@ -110,9 +110,10 @@
                                         @foreach ($ad_stores_data as $item)
                                             <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
                                                 <div class="header-banner">
-                                                <a href="">
-                                                    <img src="{{ $item['photo'] }}" alt="" style="width:100%; height: 100%">
-                                                </a>
+                                                    <a href="">
+                                                        <img src="{{ $item['photo'] }}" alt=""
+                                                            style="width:100%; height: 100%">
+                                                    </a>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -279,22 +280,28 @@
             <div class="pt-4">
                 <div class="row" id='saleProduct'>
                     <div class="col-lg-2"></div>
-                    @foreach ($sales as $key=> $sale)
-                    @if ($key=> )
-                        
-                    @endif
-                    <div class="col-lg-5 col-sm-12">
-                        <div class="content"><a href="#">
-                                <img src="{{ asset('images/sales/'.$sale->image) }}" alt="" class="saleimg">
-                            </a>
+                    
+                    @foreach ($sales as $key => $sale)
+                    @php
+                        $key = $key+1;
+                    @endphp
+                        @if ($key % 3   == 0)
+                       
+                            <div class="col-lg-2"></div>
+                        @endif
+                        <div class="col-lg-5 col-sm-12">
+                            <div class="content"><a href="#">
+                                    <img src="{{ asset('images/sales/' . $sale->image) }}" alt="{{$sale->name}}" class="saleimg">
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                        
                     @endforeach
-                    
-                    
+
+
                 </div>
             </div>
-            
+
             {{-- <div class="row" id='saleService'>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-5">
