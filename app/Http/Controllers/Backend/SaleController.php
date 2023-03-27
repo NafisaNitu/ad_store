@@ -24,28 +24,19 @@ class SaleController extends Controller
 
     public function store(SaleAdStoreRequest $request)
     {
-
-        $sale = new Sale();
-        $sale->type = $request->type;
-        $sale->name = $request->name;
-        $sale->description = $request->description;
-        if ($request->has('image')) {
-            
+        if($request->hasFile('image')){
             $image = $request->file('image');
-            
-            $reImage = time() . '.' . $image->getClientOriginalExtension();
-           
-            $image_resize = Image::make($image)->resize(320, 240);
-            $dest = public_path('public/images/sales');
-            
+            $img = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/sales/'.$img);
+            Image::make($image)->resize(570, 230)->save($location);
 
-            $image_resize->save($dest,$reImage);
-
-            // save in database
-            $sale->image = $reImage;
+            $sale = new Sale();
+            $sale->type = $request->type;
+            $sale->name = $request->name;
+            $sale->description = $request->description;
+            $sale->image = $img;
+            $sale->save();
         }
-        $sale->save();
-
         return back()->with('success','Sales add successfully.');
     }
 }
