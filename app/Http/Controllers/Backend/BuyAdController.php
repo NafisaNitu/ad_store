@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuyAdFormRequest;
 use App\Models\BuyAd;
+use Image;
 use Illuminate\Http\Request;
 
 class BuyAdController extends Controller
@@ -37,20 +38,21 @@ class BuyAdController extends Controller
      */
     public function store(BuyAdFormRequest $request)
     {
-        $buy_add = new BuyAd();
-        $buy_add->type = $request->type;
-        $buy_add->name = $request->name;
-        $buy_add->description = $request->description;
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $reImage = time() . '.' . $image->getClientOriginalExtension();
-            $dest = public_path('/images/buy_ad');
-            $image->move($dest, $reImage);
 
-            // save in database
-            $buy_add->image = $reImage;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $img = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/buy_ad/'.$img);
+            Image::make($image)->resize(570, 230)->save($location);
+
+            $buy_add = new BuyAd();
+            $buy_add->type = $request->type;
+            $buy_add->name = $request->name;
+            $buy_add->description = $request->description;
+            $buy_add->image = $img;
+            $buy_add->save();
         }
-        $buy_add->save();
+       
 
         return back()->with('success','BuyAds add successfully.');
     }

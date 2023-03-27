@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RentAdFormRequest;
 use App\Models\RentAd;
 use Illuminate\Http\Request;
-
+use Image;
 class RentAdController extends Controller
 {
     /**
@@ -37,20 +37,20 @@ class RentAdController extends Controller
      */
     public function store(RentAdFormRequest $request)
     {
-        $rent_add = new RentAd();
-        $rent_add->type = $request->type;
-        $rent_add->name = $request->name;
-        $rent_add->description = $request->description;
-        if ($request->has('image')) {
+        if($request->hasFile('image')){
             $image = $request->file('image');
-            $reImage = time() . '.' . $image->getClientOriginalExtension();
-            $dest = public_path('/images/rent_ad');
-            $image->move($dest, $reImage);
+            $img = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/rent_ad/'.$img);
+            Image::make($image)->resize(570, 230)->save($location);
 
-            // save in database
-            $rent_add->image = $reImage;
+            $rent_add = new RentAd();
+            $rent_add->type = $request->type;
+            $rent_add->name = $request->name;
+            $rent_add->description = $request->description;
+            $rent_add->image = $img;
+            $rent_add->save();
         }
-        $rent_add->save();
+       
 
         return back()->with('success','BuyAds add successfully.');
     }
