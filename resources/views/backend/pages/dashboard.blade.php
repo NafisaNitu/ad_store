@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
-<<<<<<< HEAD
-=======
+
 
 @section('content')
      <!-- page title area end -->

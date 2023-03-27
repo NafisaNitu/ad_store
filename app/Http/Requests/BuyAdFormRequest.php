@@ -4,9 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaleAdStoreRequest extends FormRequest
+class BuyAdFormRequest extends FormRequest
 {
-  
+    
     public function authorize()
     {
         return true;

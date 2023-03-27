@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\BuyAdController;
+use App\Http\Controllers\Backend\RentAdController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\SaleController;
@@ -33,6 +35,8 @@ Route::get('/dashboard', function () {
     // sales ads
 Route::middleware('auth')->group(function(){
     Route::resource('sale-add',SaleController::class);
+    Route::resource('buy-add',BuyAdController::class);
+    Route::resource('rent-add',RentAdController::class);
   
 });
 

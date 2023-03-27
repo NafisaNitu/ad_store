@@ -27,7 +27,9 @@
                                             <td>{{ $loop->index +1 }}</td>
                                             <td>{{$sale->name}}</td>
                                             <td>{{$sale->type}}</td>
-                                            <td>{{$sale->image}}</td>
+                                            <td class="text-center">
+                                                <img src="{{ asset('images/sales/'.$sale->image)}}" alt="{{$sale->name}}" width="82px">
+                                            </td>
                                             
                                             <td>
                                                 <ul class="d-flex justify-content-center">
