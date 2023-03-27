@@ -279,40 +279,23 @@
             <div class="pt-4">
                 <div class="row" id='saleProduct'>
                     <div class="col-lg-2"></div>
+                    @foreach ($sales as $key=> $sale)
+                    @if ($key=> )
+                        
+                    @endif
                     <div class="col-lg-5 col-sm-12">
                         <div class="content"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/s1.jpg') }}" alt="" class="saleimg">
+                                <img src="{{ asset('images/sales/'.$sale->image) }}" alt="" class="saleimg">
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-sm-12">
-                        <div class="content"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/s3.jpg') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
+                    
+                    
                 </div>
             </div>
-            <div class="pt-4">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5 col-sm-12">
-                        <div class="content"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/s2.jpg') }}" alt="" class="saleimg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="content"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/s4.jpg') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id='saleService'>
+            
+            {{-- <div class="row" id='saleService'>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-5">
                     <div class="content mt-4"><a href="#">
@@ -326,8 +309,8 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+            </div> 
+             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-5">
                     <div class="content mt-4"><a href="#">
@@ -379,7 +362,7 @@
                     <a href="#" class="ml-auto btn btn-block bg-white p-3 fw-700 view-btn f-14"
                         style="font-family: 'Roboto', sans-serif;" id="loadMore"> Load More </a>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </section>

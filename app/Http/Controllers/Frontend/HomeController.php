@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Sale;
+
 
 class HomeController extends Controller
 {
@@ -51,7 +53,8 @@ class HomeController extends Controller
                 'photo' => 'https://sobkisubazar.com/public/' . $ad_store['photo'],
             ];
         }
-        return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data'));
+        $sales = Sale::all();
+        return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data','sales'));
     }
     public function adstore()
     {
