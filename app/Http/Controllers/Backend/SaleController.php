@@ -29,7 +29,7 @@ class SaleController extends Controller
             $img = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('images/sales/'.$img);
             Image::make($image)->resize(570, 230)->save($location);
-
+           
             $sale = new Sale();
             $sale->type = $request->type;
             $sale->name = $request->name;

@@ -419,112 +419,29 @@
                 </div>
             </div>
             <div class="pt-4">
-                <div class="row">
+                <div class="row" id='saleProduct'>
                     <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
-                        <div class="contentBuy"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/1.png') }}" alt="" class="saleimg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="contentBuy"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/2.png') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
-                        <div class="contentBuy"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/4.png') }}" alt="" class="saleimg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="contentBuy"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/3.png') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s1.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s3.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s2.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s4.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
+                    @foreach ($buy_ads as $key => $buy_ad)
+                        @php
+                            $key = $key + 1;
+                        @endphp
+                        @if ($key % 3 == 0)
+                            <div class="col-lg-2"></div>
+                        @endif
+                        <div class="col-lg-5 col-sm-12">
+                            <div class="content"><a href="#">
+                                    <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}" alt="{{ $buy_ad->name }}"
+                                        class="saleimg">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
 
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/1.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/2.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/4.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentBuy mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/3.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row mt-4">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-10">
-                    <a href="#" class="ml-auto btn btn-block bg-white p-3 fw-700 view-btn f-14"
-                        style="font-family: 'Roboto', sans-serif;" id="loadMoreBuy"> Load More </a>
                 </div>
             </div>
-
+          
         </div>
     </section>
 
@@ -574,112 +491,30 @@
                     </div>
                 </div>
             </div>
-            <div class="pt-4">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
-                        <div class="contentRent"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/1.png') }}" alt="" class="saleimg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="contentRent"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/2.png') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
-                        <div class="contentRent"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/4.png') }}" alt="" class="saleimg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="contentRent"><a href="#">
-                                <img src="{{ asset('frontend/assets/images/3.png') }}" alt=""
-                                    class="saleimg-mt">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
 
             <div class="row">
+                
                 <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s1.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s3.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
+                @foreach ($rent_ads as $key => $rent_ad)
+                        @php
+                            $key = $key + 1;
+                        @endphp
+                        @if ($key % 3 == 0)
+                            <div class="col-lg-2"></div>
+                        @endif
+                        <div class="col-lg-5">
+                            <div class="contentRent mt-4"><a href="#">
+                                <img src="{{ asset('images/rent_ad/' . $rent_ad->image) }}" alt="{{ $rent_ad->name }}"
+                                class="saleimg">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                
+                
             </div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s2.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/s4.jpg') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/1.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/2.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/4.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="contentRent mt-4"><a href="#">
-                            <img src="{{ asset('frontend/assets/images/3.png') }}" alt="" class="saleimg">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-4">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-10">
-                    <a href="#" class="ml-auto btn btn-block bg-white p-3 fw-700 view-btn f-14"
-                        style="font-family: 'Roboto', sans-serif;" id="loadMoreRent"> Load More </a>
-                </div>
-            </div>
+            
 
         </div>
     </section>
