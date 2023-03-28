@@ -280,22 +280,21 @@
             <div class="pt-4">
                 <div class="row" id='saleProduct'>
                     <div class="col-lg-2"></div>
-                    
+
                     @foreach ($sales as $key => $sale)
-                    @php
-                        $key = $key+1;
-                    @endphp
-                        @if ($key % 3   == 0)
-                       
+                        @php
+                            $key = $key + 1;
+                        @endphp
+                        @if ($key % 3 == 0)
                             <div class="col-lg-2"></div>
                         @endif
                         <div class="col-lg-5 col-sm-12">
                             <div class="content"><a href="#">
-                                    <img src="{{ asset('images/sales/' . $sale->image) }}" alt="{{$sale->name}}" class="saleimg">
+                                    <img src="{{ asset('images/sales/' . $sale->image) }}" alt="{{ $sale->name }}"
+                                        class="saleimg">
                                 </a>
                             </div>
                         </div>
-                        
                     @endforeach
 
 
