@@ -489,28 +489,26 @@
                     </div>
                 </div>
             </div>
-            <div class="pt-4">
-                <div class="row" id='buyProduct'>
-                    <div class="col-lg-2"></div>
-
-                    @foreach ($buy_ads as $key => $buy_ad)
+            <div class="row">
+                
+                <div class="col-lg-2"></div>
+                @foreach ($buy_ads as $key => $buy_ad)
                         @php
                             $key = $key + 1;
                         @endphp
                         @if ($key % 3 == 0)
                             <div class="col-lg-2"></div>
                         @endif
-                        <div class="col-lg-5 col-sm-12">
-                            <div class="content"><a href="#">
-                                    <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}" alt="{{ $buy_ad->name }}"
-                                        class="saleimg">
+                        <div class="col-lg-5">
+                            <div class="contentRent mt-4"><a href="#">
+                                <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}" alt="{{ $buy_ad->name ?? '' }}"
+                                class="saleimg">
                                 </a>
                             </div>
                         </div>
                     @endforeach
-
-
-                </div>
+                
+                
             </div>
 
             {{-- <div class="row" id='saleService'>
