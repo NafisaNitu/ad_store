@@ -37,6 +37,10 @@
                         <label for="salesImage">Image <span class="text-danger">*</span></label>
                         <input type="file" name="image" class="form-control" id="salesImage" required>
                     </div>
+                    <div class="form-group">
+                        <label for="salesImage">Big Banner</label>
+                        <input type="file" name="banner" class="form-control" id="salesImage">
+                    </div>
                     <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
                 </form>
             </div>
