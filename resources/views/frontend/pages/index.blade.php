@@ -244,7 +244,16 @@
                     <div id="thirdCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div id="thirdCarousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-item active">
+                                @foreach ($sales as $key => $sale)
+                                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} ">
+                                        <a href="https://sobkisubazar.com/">
+                                            <img src="{{ asset('images/sales/' . $sale->banner) }}"
+                                                alt="{{ $sale->name ?? '' }}" class="banner1">
+                                        </a>
+
+                                    </div>
+                                @endforeach
+                                {{-- <div class="carousel-item active">
                                     <img src="{{ asset('frontend/assets/images/slider1.jpg') }}" alt=""
                                         class="banner1">
                                 </div>
@@ -263,7 +272,7 @@
                                             class="banner1">
                                     </a>
 
-                                </div>
+                                </div> --}}
                             </div>
                             <a class="carousel-control-prev" href="#thirdCarousel" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -451,17 +460,23 @@
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-10">
-                    <h2 class="py-3 text-left w-700" style="font-size:24px; font-family: 'Roboto', sans-serif;">All Sale
+                    <h2 class="py-3 text-left w-700" style="font-size:24px; font-family: 'Roboto', sans-serif;">All Buy
                         Ad</h2>
                     <div id="thirdCarousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div id="thirdCarousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('frontend/assets/images/slider1.jpg') }}" alt=""
-                                        class="banner1">
-                                </div>
+                                @foreach ($buy_ads as $key => $buy_ad)
+                                <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} ">
+                                    <a href="https://sobkisubazar.com/">
+                                        <img src="{{ asset('images/buy_ad/' . $buy_ad->banner) }}"
+                                            alt="{{ $sale->name ?? '' }}" class="banner1">
+                                    </a>
 
-                                <div class="carousel-item">
+                                </div>
+                                @endforeach
+
+
+                                {{-- <div class="carousel-item">
                                     <a href="https://sobkisubazar.com/">
                                         <img src="{{ asset('frontend/assets/images/slider1.jpg') }}" alt=""
                                             class="banner1">
@@ -475,7 +490,7 @@
                                             class="banner1">
                                     </a>
 
-                                </div>
+                                </div> --}}
                             </div>
                             <a class="carousel-control-prev" href="#thirdCarousel" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -490,25 +505,25 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="col-lg-2"></div>
                 @foreach ($buy_ads as $key => $buy_ad)
-                        @php
-                            $key = $key + 1;
-                        @endphp
-                        @if ($key % 3 == 0)
-                            <div class="col-lg-2"></div>
-                        @endif
-                        <div class="col-lg-5">
-                            <div class="contentRent mt-4"><a href="#">
-                                <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}" alt="{{ $buy_ad->name ?? '' }}"
-                                class="saleimg">
-                                </a>
-                            </div>
+                    @php
+                        $key = $key + 1;
+                    @endphp
+                    @if ($key % 3 == 0)
+                        <div class="col-lg-2"></div>
+                    @endif
+                    <div class="col-lg-5">
+                        <div class="contentRent mt-4"><a href="#">
+                                <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}"
+                                    alt="{{ $buy_ad->name ?? '' }}" class="saleimg">
+                            </a>
                         </div>
-                    @endforeach
-                
-                
+                    </div>
+                @endforeach
+
+
             </div>
 
             {{-- <div class="row" id='saleService'>
@@ -594,7 +609,16 @@
                     <div id="myCarouselRent" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div id="myCarouselRent" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-item active">
+                                @foreach ($rent_ads as $key => $rent_ad)
+                                <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} ">
+                                    <a href="https://sobkisubazar.com/">
+                                        <img src="{{ asset('images/rent_ad/' . $rent_ad->banner) }}"
+                                            alt="{{ $rent_ad->name ?? '' }}" class="banner1">
+                                    </a>
+
+                                </div>
+                                @endforeach
+                                {{-- <div class="carousel-item active">
                                     <img src="{{ asset('frontend/assets/images/banner6.jpg') }}" alt=""
                                         class="banner1">
                                 </div>
@@ -613,7 +637,7 @@
                                             class="banner1">
                                     </a>
 
-                                </div>
+                                </div> --}}
                             </div>
                             <a class="carousel-control-prev" href="#myCarouselRent" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -627,30 +651,30 @@
                     </div>
                 </div>
             </div>
-        
+
 
             <div class="row">
-                
+
                 <div class="col-lg-2"></div>
                 @foreach ($rent_ads as $key => $rent_ad)
-                        @php
-                            $key = $key + 1;
-                        @endphp
-                        @if ($key % 3 == 0)
-                            <div class="col-lg-2"></div>
-                        @endif
-                        <div class="col-lg-5">
-                            <div class="contentRent mt-4"><a href="#">
+                    @php
+                        $key = $key + 1;
+                    @endphp
+                    @if ($key % 3 == 0)
+                        <div class="col-lg-2"></div>
+                    @endif
+                    <div class="col-lg-5">
+                        <div class="contentRent mt-4"><a href="#">
                                 <img src="{{ asset('images/rent_ad/' . $rent_ad->image) }}" alt="{{ $rent_ad->name }}"
-                                class="saleimg">
-                                </a>
-                            </div>
+                                    class="saleimg">
+                            </a>
                         </div>
-                    @endforeach
-                
-                
+                    </div>
+                @endforeach
+
+
             </div>
-            
+
 
         </div>
     </section>
