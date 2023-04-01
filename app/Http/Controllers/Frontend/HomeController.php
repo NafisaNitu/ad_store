@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BuyAd;
+use App\Models\RentAd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Sale;
@@ -54,7 +56,9 @@ class HomeController extends Controller
             ];
         }
         $sales = Sale::all();
-        return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data','sales'));
+        $buy_ads = BuyAd::all();
+        $rent_ads = RentAd::all();
+        return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data','sales','buy_ads','rent_ads'));
     }
     public function adstore()
     {

@@ -39,22 +39,29 @@ class BuyAdController extends Controller
     public function store(BuyAdFormRequest $request)
     {
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $img = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path('images/buy_ad/'.$img);
+            $img = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/buy_ad/' . $img);
             Image::make($image)->resize(570, 230)->save($location);
-
+            // banner
+            if ($request->banner) {
+                $banner_image  = $request->file('banner');
+                $banner = date('YmdHisa') . time() . '.' . $banner_image->getClientOriginalExtension();
+                $location_banner = public_path('images/buy_ad/' . $banner);
+                Image::make($banner_image)->resize(1170, 400)->save($location_banner);
+            }
             $buy_add = new BuyAd();
             $buy_add->type = $request->type;
             $buy_add->name = $request->name;
             $buy_add->description = $request->description;
             $buy_add->image = $img;
+            $buy_add->banner = $banner ?? '';
             $buy_add->save();
         }
-       
 
-        return back()->with('success','BuyAds add successfully.');
+
+        return back()->with('success', 'BuyAds add successfully.');
     }
 
     /**
