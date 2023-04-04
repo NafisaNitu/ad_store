@@ -4,11 +4,9 @@
 <script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
 <script src="{{ asset('frontend/assets/js/vendors.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/fontawesome.min.js"
-    integrity="sha512-j3gF1rYV2kvAKJ0Jo5CdgLgSYS7QYmBVVUjduXdoeBkc4NFV4aSRTi+Rodkiy9ht7ZYEwF+s09S43Z1Y+ujUkA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-<!-- <script src="js/main.js"></script> -->
+<script src="js/main.js"></script>
 
 <script>
     $(document).ready(function () {

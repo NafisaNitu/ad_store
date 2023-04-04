@@ -272,16 +272,16 @@ a{
 
 .bbb_viewed_prev {
     position: absolute;
-    top: 47%;
+    top: 45%;
     z-index: 2;
     left: 1%;
 }
 
 .bbb_viewed_next {
     position: absolute;
-    top: 47%;
+    top: 45%;
     z-index: 2;
-    right: 1%;
+    right: 2%;
 }
 
 .bbb_viewed_slider_container {
@@ -299,9 +299,9 @@ a{
 }
 
 .bbb_viewed_image {
-    width: 210px;
-    height: 210px;
-    object-fit: cover;
+    width: 225px;
+    height: 100%;
+    /* object-fit: cover; */
 }
 
 .bbb_viewed_image img {
@@ -310,8 +310,8 @@ a{
 }
 
 .bbb_viewed_image-2 {
-    width: 210px;
-    height: 210px;
+    width: 225px;
+    height: 100%;
     /*object-fit: cover;*/
 }
 
