@@ -46,17 +46,17 @@
                                 class="instagram"><i class="fa-brands fa-instagram icon-social-style-in"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://twitter.com/SobkisuB" target="_blank" class="twitter">
+                            <a href="https://twitter.com/SobkisuBazar" target="_blank" class="twitter">
                                 <i class="fa-brands fa-twitter icon-social-style-t"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/sobkisu-%E0%A6%B8%E0%A6%AC%E0%A6%95%E0%A6%BF%E0%A6%9B%E0%A7%81-%E0%A6%AC%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0-10a34a241/"
+                            <a href="https://www.linkedin.com/company/sobkisubazar/"
                                 target="_blank" class="linkedin"><i class="fa-brands fa-linkedin-in icon-social-style-link"></i></a>
                         </li>
 
                         <li class="list-inline-item">
-                            <a href="https://www.youtube.com/channel/UCLgS9qJTWLRaC5dG6r4ZrwQ/"
+                            <a href="https://www.youtube.com/@sobkisubazar"
                                 target="_blank" class="youtube"><i class="fa-brands fa-youtube icon-social-style-y"></i></a>
                         </li>
                     </ul>

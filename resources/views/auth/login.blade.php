@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - srtdash</title>
+    <title>Login - Ad store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
@@ -40,12 +40,13 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="login-form-head">
-                        <h4>Sign In</h4>
+                        <img src="{{ asset('frontend/assets/images/logo.png') }}" 
+                        alt="Sobkisubazar" class="mw-120 h-51px h-md-51px">
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" id="exampleInputEmail1">
+                            <input type="email" name="email" id="exampleInputEmail1" >
                             <i class="ti-email"></i>
                         </div>
                         <div class="form-gp">
@@ -65,19 +66,19 @@
                             </div>
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
-                            <div class="login-other row mt-4">
+                            <button id="form_submit" type="submit">Login</button>
+                            {{-- <div class="login-other row mt-4">
                                 <div class="col-6">
                                     <a class="fb-login" href="#">Log in with <i class="fa fa-facebook"></i></a>
                                 </div>
                                 <div class="col-6">
                                     <a class="google-login" href="#">Log in with <i class="fa fa-google"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="form-footer text-center mt-5">
+                        {{-- <div class="form-footer text-center mt-5">
                             <p class="text-muted">Don't have an account? <a href="{{ route('register') }}">Sign up</a></p>
-                        </div>
+                        </div> --}}
                     </div>
                 </form>
             </div>

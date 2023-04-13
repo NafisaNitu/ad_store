@@ -8,7 +8,7 @@
     </div>
    
 </section>
-<footer class="pt-3 pb-7 pb-xl-3" style="background-color:#d0cece !important;font-family: 'Roboto', sans-serif;">
+<footer class="pt-3 pb-3 pb-xl-3" style="background-color:#d0cece !important;font-family: 'Roboto', sans-serif;">
     <div class="container">
         <div class="row">
              <div class="col-lg-9 mx-auto">

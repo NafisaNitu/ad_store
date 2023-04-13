@@ -2,6 +2,82 @@ a{
     color: #000;
 }
 
+.paginate-style{
+    margin: 20px auto!important;
+}
+
+/* .sidebar-r {
+     height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 5%;
+    left: 5%;
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px; 
+  } */
+  
+  
+.sidebar-r {
+    /* height: 100%; */
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 15.7%;
+    left: 12%;
+    background-color: #f5f7fa;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+  }
+  
+  .sidebar-r a {
+    /* padding: 8px 8px 8px 32px; */
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar-r a:hover {
+    color: #f77b0b;
+  }
+  
+  .sidebar-r .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn {
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f5f7fa;
+    color: #000;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #e2e5ec;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
 .header-banner{
     width: 100%;
     height: 406px;
@@ -16,6 +92,11 @@ a{
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
 }
+.sidebar-subtitle{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
 .header-icon-text{
     color: #000; 
     font-size: 17px;
@@ -25,9 +106,12 @@ a{
     height: 400px;
 }
 .ad-menu{
-    color:#8f8787 !important;
+    /* color:#8f8787 !important; */
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
+}
+.menu-text-hover:hover{
+    color: #f77b0b;
 }
 .sidebar.sticky{
     background: white;
@@ -35,6 +119,13 @@ a{
     color: #000;
     top: 9%;
     transition: all 0.3s ease;
+}
+.sidebar-r.sticky{
+    /* background: white; */
+    opacity: 0.9;
+    /* color: #000; */
+    top: 9%;
+    /* transition: all 0.3s ease; */
 }
 .btn-post{
     color:#fff;
@@ -185,7 +276,11 @@ a{
     }
     .banner1{
         width:100%; 
-        height: 340px;
+        height: 320px;
+    }
+    .header-banner {
+        width: 100%;
+        height: 387px;
     }
     .front-banner {
         height: 370px;
@@ -200,13 +295,16 @@ a{
     .sidebar.sticky {
         top: 11%;
     }
+    .sidebar {
+        width: 17%;
+    }
     .bbb_viewed_image {
-        width: 210px;
-        height: 210px;
+        width: 200px!important;
+        height: 100%;
     }
     .bbb_viewed_image-2 {
-        width: 210px;
-        height: 210px;
+        width: 200px!important;
+        height: 200px!important;
     }
     .saleimg{
         width:100%; 
@@ -216,24 +314,38 @@ a{
         width:100%; 
         height: 100%;
     }
-    .sidebar {
-        width: 17%;
-    }
     .fs-md-13{
-        font-size: 13px!important;
+        font-size: 11px!important;
     }
-   
+    .sidebar-title {
+        font-size: 13px;
+    }
+    .sidebar-subtitle{
+        font-size: 12px;
+    }
+    .d-none-cat {
+        display: none !important;
+    }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1440px) {
     .sidebar.sticky{
         top: 11%;
     }
+    .sidebar {
+        width: 16.7%;
+    }
+    .d-none-cat {
+        display: none !important;
+    }
 }
 
 @media only screen and (min-width: 1441px) and (max-width: 2560px) {
     .sidebar.sticky{
-        top: 9%;
+        top: 9.5%;
+    }
+    .d-none-cat {
+        display: none !important;
     }
 }
 
@@ -313,6 +425,7 @@ a{
     width: 225px;
     height: 100%;
     /*object-fit: cover;*/
+    background: #fff;
 }
 
 .bbb_viewed_image-2 img {
@@ -340,7 +453,6 @@ a{
     .under-header-bg{
         background-color: #572c84;
     }
-
     .cat-hover ul li:hover {
         color: #fff;
     }
@@ -350,14 +462,12 @@ a{
             height: 200px;
         }
         .bannar2 {
-
             width: 100%;
             height: 190px;
         }
         .bannar3 {
             width: 100%;
             height: 190px;
-
         }
         .main-holder {
             margin-top: 10%;
@@ -368,8 +478,6 @@ a{
             padding-top: 60px;
             padding-bottom: 30px;
         }
-        
-        
         .category {
             width: 30%;
             margin-left: 1%;
@@ -412,9 +520,7 @@ a{
                     min-height: 110px;
                     padding: 30px;
                 }
-
             }
-
             @media only screen and (min-width:1024px) and (max-width:1208px) {
                 .boxx {
                     min-height: 110px;
@@ -439,6 +545,28 @@ a{
                     max-width: 800px;
                 }
             }
+
+            
+            @media only screen and (min-width: 1201px) and (max-width:1369px) {
+                .bbb_viewed_image {
+                    width: 245px!important;
+                }
+
+                .bbb_viewed_image-2 {
+                    width: 245px!important;
+                }
+            }
+
+            @media only screen and (min-width: 1100px) and (max-width:1200px) {
+                .bbb_viewed_image {
+                    width: 225px!important;
+                }
+
+                .bbb_viewed_image-2 {
+                    width: 225px!important;
+                }
+            }
+
 
             @media only screen and (min-width: 1920px) {
                 .marleft {

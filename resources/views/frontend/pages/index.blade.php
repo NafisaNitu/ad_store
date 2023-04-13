@@ -1,14 +1,21 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<style>
+    #paginations nav .small {
+        visibility: hidden;
+        /* display: none; */
+    }
+</style>
     <div class="under-header-bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row position-relative
                 ">
-                        <div class="col-lg-2 col-md-2 col-sm-10 d-none d-lg-block p-0">
-                            <div class="sidebar z-1020 cat-hover category-shadow-sm pt-0" style="background-color: #f5f7fa;">
+                        <div class="col-lg-2 d-none d-lg-block p-0">
+
+                           <div class="sidebar z-1020 cat-hover category-shadow-sm pt-0" style="background-color: #f5f7fa;">
                                 <div class="pr-3 pl-3 pt-2 pb-1 d-none d-lg-block all-category position-relative text-left">
                                     <a href="https://sobkisubazar.com/categories" class="text-reset">
                                         <span class="fw-700 mr-3 sidebar-title">Category Filter</span>
@@ -17,10 +24,10 @@
 
 
                                 <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
-                                    <div class="fs-14 fw-600 px-3">
+                                    <div class="fw-600 px-3 sidebar-subtitle">
                                         <a class="text-dark" href="#saleAd">Sale Ad</a>
                                     </div>
-                                    <div class="px-5">
+                                    <div class="px-4">
                                         <div class="aiz-checkbox-list">
                                             <label class="aiz-checkbox">
                                                 <input type="checkbox" name="product" value="product">
@@ -44,10 +51,10 @@
                                 </div>
 
                                 <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
-                                    <div class="fs-14 fw-600 px-3">
+                                    <div class="fw-600 px-3 sidebar-subtitle">
                                         <a class="text-dark" href="#buyAd">Buy Ad</a>
                                     </div>
-                                    <div class="px-5">
+                                    <div class="px-4">
                                         <div class="aiz-checkbox-list">
                                             <label class="aiz-checkbox">
                                                 <input type="checkbox" name="Product" value="Product" onchange="filter()">
@@ -69,10 +76,10 @@
                                 </div>
 
                                 <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
-                                    <div class="fs-14 fw-600 px-3">
+                                    <div class="fw-600 px-3 sidebar-subtitle">
                                         <a class="text-dark" href="#rentAd">Rent Ad</a>
                                     </div>
-                                    <div class="px-5">
+                                    <div class="px-4">
                                         <div class="aiz-checkbox-list">
                                             <label class="aiz-checkbox">
                                                 <input type="checkbox" name="ForRent" value="ForRent" onchange="filter()">
@@ -95,15 +102,16 @@
                                 </div>
 
                                 <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
-                                    <div class="fs-14 fw-600 px-3 pb-1">
+                                    <div class="fw-600 px-3 pb-1 sidebar-subtitle">
                                         <a class="text-dark" href="#allOffer">All Offer</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
+                      
 
                         {{-- all offer big banner from sob kisu baazar --}}
-                        <div class="col-lg-10 col-md-10 col-sm-10 pr-0 pl-0">
+                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 pr-0 pl-0">
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -218,8 +226,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-
                             </div>
                         </div>
                     </div>
@@ -233,7 +239,7 @@
 
     <section id='saleAd' class="">
         <!-- <h2 class="py-3 text-center w-700 border-bottom border-top" style="font-size:24px; font-family: 'Roboto', sans-serif;">All Sale Ad</h2> -->
-        <div class="container pt-2 pb-2">
+        <div class="container pt-2">
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-10">
@@ -272,26 +278,31 @@
                 @foreach ($sales as $key => $sale)
                     @php
                         $key = $key + 1;
+                       
                     @endphp
                     @if ($key % 3 == 0)
+                    {{-- @dump($key) --}}
                         <div class="col-lg-2"></div>
                     @endif
-                    <div class="col-lg-5">
-                        <div class="mt-4"><a href="#">
-                                <img src="{{ asset('images/sales/' . $sale->image) }}"
+                    <div class="col-lg-5 col-sm-6">
+                        <div class="mt-4"><a href="{{ route('show-sale',$sale->id) }}" >
+                            <img src="{{ asset('images/sales/' . $sale->image) }}"
                                     alt="{{ $sale->name ?? '' }}" class="saleimg">
                             </a>
                         </div>
                     </div>
                 @endforeach
+                <div class="" id="paginations" style="margin: 20px auto!important;">
+                     {{ $sales->links() }}
+                </div>
             </div>
-
+            
         </div>
     </section>
 
     <section id='buyAd' class="">
         <!-- <h2 class="py-3 text-center w-700 border-bottom border-top" style="font-size:24px; font-family: 'Roboto', sans-serif;">All Sale Ad</h2> -->
-        <div class="container pt-2 pb-2">
+        <div class="container pt-1">
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-10">
@@ -331,21 +342,24 @@
                     @if ($key % 3 == 0)
                         <div class="col-lg-2"></div>
                     @endif
-                    <div class="col-lg-5">
-                        <div class="mt-4"><a href="#">
+                    <div class="col-lg-5 col-sm-6">
+                        <div class="mt-4"><a href="{{ route('show-buy',$buy_ad->id) }}">
                                 <img src="{{ asset('images/buy_ad/' . $buy_ad->image) }}"
                                     alt="{{ $buy_ad->name ?? '' }}" class="saleimg">
                             </a>
                         </div>
                     </div>
                 @endforeach
+                <div class="" id="paginations" style="margin: 20px auto!important;">
+                    {{ $sales->appends(request()->input())->links() }}
+               </div>
             </div>
         </div>
     </section>
     <!-- Rent Ads Section -->
     <section id='rentAd' class="">
         <!-- <h2 class="py-3 text-center w-700 border-bottom border-top" style="font-size:24px; font-family: 'Roboto', sans-serif;">All Rent Ad</h2> -->
-        <div class="container pt-2 pb-4">
+        <div class="container pt-1 pb-2">
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-10">
@@ -385,14 +399,17 @@
                     @if ($key % 3 == 0)
                         <div class="col-lg-2"></div>
                     @endif
-                    <div class="col-lg-5">
-                        <div class="mt-4"><a href="#">
+                    <div class="col-lg-5 col-sm-6">
+                        <div class="mt-4"><a href="{{ route('show-rent',$rent_ad->id) }}">
                                 <img src="{{ asset('images/rent_ad/' . $rent_ad->image) }}" alt="{{ $rent_ad->name }}"
                                     class="saleimg">
                             </a>
                         </div>
                     </div>
                 @endforeach
+                <div class="" id="paginations" style="margin: 20px auto!important;">
+                    {{ $sales->appends(request()->input())->links() }}
+               </div>
             </div>
         </div>
     </section>

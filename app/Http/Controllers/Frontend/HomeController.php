@@ -8,6 +8,7 @@ use App\Models\RentAd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Sale;
+use Illuminate\Pagination\Paginator;
 
 
 class HomeController extends Controller
@@ -55,7 +56,7 @@ class HomeController extends Controller
                 'photo' => 'https://sobkisubazar.com/public/' . $ad_store['photo'],
             ];
         }
-        $sales = Sale::all();
+        $sales = Sale::orderBy('id', 'desc')->paginate(4);
         $buy_ads = BuyAd::all();
         $rent_ads = RentAd::all();
         return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data','sales','buy_ads','rent_ads'));
@@ -63,5 +64,28 @@ class HomeController extends Controller
     public function adstore()
     {
         return view('frontend.pages.adstore');
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $searchItem = Sale::orWhere('name','like','%'.$search.'%')
+        ->orWhere('description','like','%'.$search.'%')
+        ->orderBy('id','desc')
+        ->paginate(4);
+        return view('frontend.pages.search', compact('searchItem'));
+    }
+
+    public function showSale($id){
+        $saleItem = Sale::find($id);
+        return view('frontend.pages.sale-details', compact('saleItem'));
+    }
+    public function showBuy($id){
+        $buyItem = BuyAd::find($id);
+        return view('frontend.pages.buy-details', compact('buyItem'));
+    }
+
+    public function showRent($id){
+        $rentItem = RentAd::find($id);
+        return view('frontend.pages.rent-details', compact('rentItem'));
     }
 }

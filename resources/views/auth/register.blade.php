@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - srtdash</title>
+    <title>Register -  Ad store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
@@ -40,7 +40,8 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="login-form-head">
-                        <h4>Sign up</h4>
+                        <img src="{{ asset('frontend/assets/images/logo.png') }}" 
+                        alt="Sobkisubazar" class="mw-120 h-51px h-md-51px"> 
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
@@ -64,19 +65,19 @@
                             <i class="ti-lock"></i>
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
-                            <div class="login-other row mt-4">
+                            <button id="form_submit" type="submit">Register </i></button>
+                            {{-- <div class="login-other row mt-4">
                                 <div class="col-6">
                                     <a class="fb-login" href="#">Sign up with <i class="fa fa-facebook"></i></a>
                                 </div>
                                 <div class="col-6">
                                     <a class="google-login" href="#">Sign up with <i class="fa fa-google"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="form-footer text-center mt-5">
+                        {{-- <div class="form-footer text-center mt-5">
                             <p class="text-muted">Already have an account? <a href="{{ route('login') }}">Sign in</a></p>
-                        </div>
+                        </div> --}}
                     </div>
                 </form>
             </div>

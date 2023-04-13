@@ -8,6 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 <script src="js/main.js"></script>
 
+
+<script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "240px";
+      document.getElementById("main").style.marginLeft = "5px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+    </script>
+
 <script>
     $(document).ready(function () {
         $(window).scroll(function () {
@@ -19,6 +32,43 @@
         });
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if (this.scrollY > 10) {
+                $('.sidebar-r').addClass("sticky");
+            } else {
+                $('.sidebar-r').removeClass("sticky");
+            }
+        });
+    });
+</script>
+
+
+
+
+{{-- <script>
+    var getWidth = $( window).width();
+    
+    if(getWidth <= 768){
+        $("#mobileScreen").addClass("d-block");
+        $("#pcscreen").addClass("d-none");
+      }else{
+        $("#mobileScreen").addClass("d-none");
+        $("#pcscreen").addClass("d-block");
+      }
+</script> --}}
+
+
+
+
+
+
+
+
+
+
 
 <!-- For Sale Section -->
 <script>
@@ -139,14 +189,22 @@ if($('.bbb_viewed_slider').length)
 
     viewedSlider.owlCarousel(
         {
-            loop:true,
-            margin:30,
-            autoplay:true,
-            autoplayTimeout:1500,
-            nav:false,
-            dots:false,
-            responsive:
-                {
+            
+        loop:true,
+        margin:30,
+        autoplay:true,
+        autoplayTimeout:1500,
+        nav:false,
+        dots:false,
+        responsive:
+            {
+                    // 0:{items:1},
+                    // 575:{items:3},
+                    // 767:{items:3},
+                    // 768:{items:4},
+                    // 992:{items:4},
+                    // 1025:{items:5}
+
                     0:{items:1},
                     575:{items:3},
                     767:{items:3},

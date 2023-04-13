@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 
 //Frontent Section
 Route::get('/',[HomeController::class,'index']);
+Route::get('show-sale/{id}',[HomeController::class,'showSale'])->name('show-sale');
+Route::get('show-buy/{id}',[HomeController::class,'showBuy'])->name('show-buy');
+Route::get('show-rent/{id}',[HomeController::class,'showRent'])->name('show-rent');
+
+Route::get('/search',[HomeController::class,'search'])->name('search');
 Route::get('/adstore',[HomeController::class,'adstore'])->name('adstore');
 
 //Backend Section
@@ -35,6 +40,8 @@ Route::get('/dashboard', function () {
     // sales ads
 Route::middleware('auth')->group(function(){
     Route::resource('sale-add',SaleController::class);
+
+
     Route::resource('buy-add',BuyAdController::class);
     Route::resource('rent-add',RentAdController::class);
   

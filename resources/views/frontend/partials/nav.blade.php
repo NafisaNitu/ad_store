@@ -12,7 +12,104 @@
                              <img src="{{ asset('frontend/assets/images/logo.png') }}" 
                                 alt="Sobkisubazar" class="mw-120 h-51px h-md-51px">
                          </a>
+
+                        
+                        <div id="mySidebar" class="sidebar-r category-shadow-sm d-none-cat">
+                            <a href="javascript:void(0)" class="closebtn d-none-cat" onclick="closeNav()">×</a>
+                            {{-- <a href="#">About</a>
+                            <a href="#">Services</a>
+                            <a href="#">Clients</a>
+                            <a href="#">Contact</a> --}}
+                            <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
+                                <div class="fw-600 px-3 sidebar-subtitle">
+                                    <a class="text-dark" href="#saleAd">Sale Ad</a>
+                                </div>
+                                <div class="px-4">
+                                    <div class="aiz-checkbox-list">
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="product" value="product">
+                                            <span class="aiz-square-check"></span>
+                                            <a href="#saleProduct"><span class="fs-13 fs-md-13">Product</span></a>
+                                        </label>
+
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="property" value="property">
+                                            <span class="aiz-square-check"></span>
+                                            <a href="#saleProperty"><span class="fs-13 fs-md-13">Property</span></a>
+                                        </label>
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="service" value="service" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <a href="#saleService"><span class="fs-13 fs-md-13">Service</span></a>
+
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
+                                <div class="fw-600 px-3 sidebar-subtitle">
+                                    <a class="text-dark" href="#buyAd">Buy Ad</a>
+                                </div>
+                                <div class="px-4">
+                                    <div class="aiz-checkbox-list">
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="Product" value="Product" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">Product</span>
+                                        </label>
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="Property" value="Property" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">Property</span>
+                                        </label>
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="Service" value="Service" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">Service</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
+                                <div class="fw-600 px-3 sidebar-subtitle">
+                                    <a class="text-dark" href="#rentAd">Rent Ad</a>
+                                </div>
+                                <div class="px-4">
+                                    <div class="aiz-checkbox-list">
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="ForRent" value="ForRent" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">For Rent</span>
+                                        </label>
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="ToRent" value="ToRent" onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">To Rent</span>
+                                        </label>
+                                        <label class="aiz-checkbox">
+                                            <input type="checkbox" name="CorporateAds" value="CorporateAds"
+                                                onchange="filter()">
+                                            <span class="aiz-square-check"></span>
+                                            <span class="fs-13 fs-md-13">Corporate Ads</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shadow-sm rounded" style="background-color: #f5f7fa;">
+                                <div class="fw-600 px-3 pb-1 sidebar-subtitle">
+                                    <a class="text-dark" href="#allOffer">All Offer</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="main d-none-cat">
+                            <button class="openbtn d-none-cat" onclick="openNav()">☰ Category Filter</button>  
+                        </div>
+  
                      </div>
+
+
                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                       </button>
@@ -23,10 +120,10 @@
                                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                               </form> -->
-                             <form action="" method="GET" class="mb-0 mobile-hor-swipe text-center">
+                             <form action="{{ route('search') }}" method="get" class="mb-0 mobile-hor-swipe text-center">
                                  <div class="d-lg-block d-flex position-relative align-items-center">
                                      <div class="input-group">
-                                         <input type="text" class="form-control" style="font-size: 18px;"
+                                         <input type="text" class="form-control" name="search" style="font-size: 18px;"
                                               placeholder="Search Your Product">
                                          <div class="d-lg-block">
                                              <button class="btn btn-primary" type="submit"
@@ -45,7 +142,7 @@
                         <ul class="list-inline mb-0 mobile-hor-swipe text-center navbar-nav">
                             <li class="list-inline-item mr-0 py-1 nav-item">
                                 <a
-                                    href="#"
+                                    href="{{ url('/') }}"
                                     class="ad-menu px-2 py-2 d-inline-block text-reset">
                                     <span class="menu-text-hover">All Ads</span>
                                 </a>
@@ -70,9 +167,9 @@
                             @auth
                             <li class="list-inline-item mr-0 py-1">
                                 <a
-                                    href="{{ url('/dashboard') }}"
+                                    href="{{ url('/dashboard') }}" target="_blank"
                                     class="ad-menu px-2 py-2 d-inline-block text-reset">
-                                    <span class="menu-text-hover">Dashboard</span>
+                                    <span class="menu-text-hover">My Account</span>
                                 </a>
                             </li>
                             @else
