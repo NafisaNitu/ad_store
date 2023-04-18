@@ -5,6 +5,10 @@ a{
 .paginate-style{
     margin: 20px auto!important;
 }
+.header-icon{
+    color: #1c1c1c; 
+    font-size: 17px;
+}
 
 /* .sidebar-r {
      height: 100%;
@@ -124,7 +128,7 @@ a{
     /* background: white; */
     opacity: 0.9;
     /* color: #000; */
-    top: 9%;
+    top: 8%;
     /* transition: all 0.3s ease; */
 }
 .btn-post{
@@ -200,42 +204,60 @@ a{
     font-size:14px;
     color:#000;
 }
+@media only screen and (max-width:425px) and (min-width:375px){
+    .sidebar-r {
+        top: 1.5%!important;
+        left: 0%;
+    }
+    .header-icon{
+        font-size: 12px;
+    }
+    .header-icon-text{
+        font-size: 12px;
+    }
+    .openbtn {
+        font-size: 10px;
+    }
+    
+    .header-banner {
+        height: 200px!important;
+    }
+    .banner1 {
+        height: 200px;
+    }
+    .bbb_viewed_image {
+        width: 200px!important;
+    }
+    .bbb_viewed_image-2 {
+        width: 200px!important;
+    }
+}
 
-@media only screen and (max-width: 667px){
-    .front-banner {
-        height: 350px;
-        object-fit: unset;
+@media only screen and (max-width:767px) and (min-width:425px){
+    .sidebar-r {
+        top: 14.6%!important;
+        left: 0%;
     }
-    .saleimg{
-        width:100%; 
-        height: 100%;
+    .sidebar-r.sticky{
+        opacity: 0.9;
+        top: 9.4%!important;
+        transition: all 0.3s ease;
     }
-    .saleimg-mt{
-        width:100%; 
-        height: 100%;
-        margin-top: 25px;
+    /* .bbb_viewed_image {
+        width: 180px;
     }
-    .custom_logo{
-        text-align: center;
-        margin: auto;
-        display: block;
+    .bbb_viewed_image-2 {
+        width: 180px;
+    } */
+    .header-banner {
+        height: 260px!important;
     }
-
-    .footer-logo-text{
-        width: 66%;
-        font-size: 22px;
-        line-height: 40px;
+    .banner1 {
+        height: 260px;
     }
-    .text-font{
-        margin-left: 20px;
-    }
-    .footer-text-p{
-        margin-left: 20px;
-        font-size: 15px;
-        line-height: 30px;
-    }
-}  
-@media only screen and (max-width:991px) and (min-width:668px){
+}
+  
+@media only screen and (max-width:991px) and (min-width:768px){
     .front-banner {
         height: 350px;
         object-fit: unset;
@@ -247,7 +269,7 @@ a{
     } */
     .footer-logo-text{
         width: 66%;
-        font-size: 22px;
+        font-size: 18px;
         line-height: 40px;
     }
     .text-font{
@@ -266,6 +288,27 @@ a{
         width:100%; 
         height: 100%;
         margin-top: 25px;
+    }
+    .sidebar-r {
+        top: 17%;
+        left: 0%;
+    }
+    .sidebar-r.sticky{
+        opacity: 0.9;
+        top: 10.7%;
+        transition: all 0.3s ease;
+    }
+    .bbb_viewed_image {
+        width: 180px!important;
+    }
+    .bbb_viewed_image-2 {
+        width: 180px!important;
+    }
+    .header-banner {
+        height: 350px!important;
+    }
+    .banner1 {
+        height: 350px;
     }
     
 }
@@ -304,7 +347,7 @@ a{
     }
     .bbb_viewed_image-2 {
         width: 200px!important;
-        height: 200px!important;
+        height: 175px!important;
     }
     .saleimg{
         width:100%; 
@@ -431,7 +474,7 @@ a{
 .bbb_viewed_image-2 img {
     display: block;
     max-width: 100%;
-    height: 210px;
+    height: 100%;
 }
    
    

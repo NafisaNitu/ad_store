@@ -7,7 +7,7 @@
                     <li class="list-inline-item mr-3 border-left-0 pr-3 pl-0">
                         <a href="tel:+8801325-319106" class="text-reset d-inline-block py-2">
                            
-                            <i class="fa-solid fa-phone" style="color: #1c1c1c; font-size: 17px;"></i>
+                            <i class="fa-solid fa-phone header-icon"></i>
                             <span class="header-icon-text">+880 9678-800843</span>
                         </a>
                     </li>
@@ -15,7 +15,7 @@
                     <li class="list-inline-item mr-3 border-left-0 pr-3 pl-0">
                         <a href="tel:+8801325-319106" class="text-reset d-inline-block py-2">
                            
-                            <i class="fa-regular fa-envelope" style="color: #1c1c1c; font-size: 17px;"></i>
+                            <i class="fa-regular fa-envelope header-icon"></i>
 
                             <span class="header-icon-text">info@sobkisubazar.com</span>
                         </a>

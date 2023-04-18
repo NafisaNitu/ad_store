@@ -10,7 +10,7 @@
                      <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
                          <a class="d-block py-2 mr-3 ml-0" href="https://sobkisubazar.com">
                              <img src="{{ asset('frontend/assets/images/logo.png') }}" 
-                                alt="Sobkisubazar" class="mw-120 h-51px h-md-51px">
+                                alt="Sobkisubazar" class="mw-120 h-40px h-md-51px">
                          </a>
 
                         
@@ -144,7 +144,7 @@
                                 <a
                                     href="{{ url('/') }}"
                                     class="ad-menu px-2 py-2 d-inline-block text-reset">
-                                    <span class="menu-text-hover">All Ads</span>
+                                    <span class="menu-text-hover"></i>All Ads</span>
                                 </a>
                             </li>
                         </ul>

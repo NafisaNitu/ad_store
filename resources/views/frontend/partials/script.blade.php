@@ -192,7 +192,7 @@ if($('.bbb_viewed_slider').length)
             
         loop:true,
         margin:30,
-        autoplay:true,
+        // autoplay:true,
         autoplayTimeout:1500,
         nav:false,
         dots:false,
@@ -205,7 +205,7 @@ if($('.bbb_viewed_slider').length)
                     // 992:{items:4},
                     // 1025:{items:5}
 
-                    0:{items:1},
+                    0:{items:2},
                     575:{items:3},
                     767:{items:3},
                     768:{items:4},
@@ -248,14 +248,14 @@ viewedSlider.owlCarousel(
     {
         loop:true,
         margin:30,
-        autoplay:true,
+        // autoplay:true,
         autoplayTimeout:2000,
         nav:false,
         dots:false,
         responsive:
             {
 
-                    0:{items:1},
+                    0:{items:2},
                     575:{items:3},
                     767:{items:3},
                     768:{items:4},
