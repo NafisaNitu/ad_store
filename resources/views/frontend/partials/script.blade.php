@@ -1,29 +1,360 @@
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{ asset('frontend/assets/js/vendors.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 <script src="js/main.js"></script>
 
 
-<script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "240px";
-      document.getElementById("main").style.marginLeft = "5px";
-    }
+
+{{-- For product filtering --}}
+
+
+<script type="text/javascript">
+
+
+    $("#cash").css({
+        "border" : "2px solid #955",
+        "border-radius" : "5px",
+        "padding" : "5px"
+    });
+
+    $(".selectPayment").click(function(){
+
+        var type = $(this).attr("data-type");
+
+        if(type == "online"){
+
+            $("input[name=paymentMethod]").val("online");
+            
+            $("#inputForm").html("");
+
+            $(this).css({
+                "border" : "2px solid #955",
+                "border-radius" : "5px",
+                "padding" : "5px"
+            });
+
+            $(this).addClass("paymentMethod");
+            $("#cash").removeClass("paymentMethod");
+
+            $("#cash").css({
+                "border" : "none",
+                "border-radius" : "0"
+            });
+
+        }else if(type == "cash"){
+
+            $("input[name=paymentMethod]").val("cash");
+
+            $("#inputForm").html(`<select class="form-control" name="paymentgetway" required>
+                                            <option value="">Select One</option>
+                                            <option value="bank">Bank</option>
+                                        </select>`);
+
+            $(this).css({
+                "border" : "2px solid #955",
+                "border-radius" : "5px",
+                "padding" : "5px"
+            });
+
+            $(this).addClass("paymentMethod");
+            $("#online").removeClass("paymentMethod");
+
+            $("#online").css({
+                "border" : "none",
+                "border-radius" : "0"
+            });
+
+        }
+
+    });
+
+
     
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
-    }
-    </script>
+    $("#customerLoginForm4").submit(function(){
+
+      var form = $("#customerLoginForm4").get(0);
+
+      $.ajax({
+        url : "{{route('customerforgotpassword.customerforgot_password')}}",
+        method: "post",
+        data : new FormData(form),
+        contentType : false,
+        processData : false,
+        beforeSend : function(){
+          $(document).find(".form-text").text("");
+        },
+        success: function(data){
+
+            if(data.message == "error"){
+                $.each(data.data, function(key, value){
+                    $("#err"+key).text(value).css("color","red");
+                });
+            }
+
+
+            if(data.messageSend == true){
+
+                $("#sendMsg").css({
+                    "display": "none",
+                });
+                $("#sendMsgShow").css({
+                    "display": "block",
+                    "color": "green",
+                });
+                $("#showMg").text(data.message).css({
+                    "color": "green",
+                });
+            }
+
+
+            if(data.dataNotFound == false){
+
+                $("#errmailPhone").text(data.message).css({
+                    "color": "red",
+                });
+                
+            }
+
+            
+        }
+
+      });
+
+      return false;
+
+    });    
+
+
+    $("#customerLoginForm3").submit(function(){
+
+      var form = $("#customerLoginForm3").get(0);
+
+      $.ajax({
+        url : "{{route('customerLogin.customer_login')}}",
+        method: "post",
+        data : new FormData(form),
+        contentType : false,
+        processData : false,
+        beforeSend : function(){
+          $(document).find(".form-text").text("");
+        },
+        success: function(data){
+
+            if(data.message == "error"){
+                $.each(data.data, function(key, value){
+                    $("#err"+key).text(value).css("color","red");
+                });
+            }
+
+
+            if(data.customerlogin == false){
+                $("#errormsg").text(data.message).css({
+                    "color":"red",
+                    "font-weight":"bold"
+                });
+            }
+            
+            if(data.customerlogin == true){
+                window.location = "{{url('/dashboard')}}";
+            }else if(data.login == false){
+                $("#msg").text(data.message);
+            }
+
+            
+        }
+
+      });
+
+      return false;
+
+    });
+
+
+
+    $("#customerLoginForm1").submit(function(){
+
+      var form = $("#customerLoginForm1").get(0);
+
+      $.ajax({
+        url : "{{route('customerRegisstationInsert.registerInsert')}}",
+        method: "post",
+        data : new FormData(form),
+        contentType : false,
+        processData : false,
+        beforeSend : function(){
+          $(document).find(".form-text").text("");
+        },
+        success: function(data){
+
+            if(data.message == "error"){
+                $.each(data.data, function(key, value){
+                    $("#err"+key).text(value).css("color","red");
+                });
+            }
+
+            
+            if(data.customerReglogin == true){
+                window.location = "{{url('/dashboard')}}";
+            }else if(data.login == false){
+                $("#msg").text(data.message);
+            }
+
+            
+        }
+
+      });
+
+      return false;
+
+    });
+
+
+    $("#customerLoginForm2").submit(function(){
+
+      var form = $("#customerLoginForm2").get(0);
+
+      $.ajax({
+        url : "{{route('customerCompanyReg.registerInsertCompany')}}",
+        method: "post",
+        data : new FormData(form),
+        contentType : false,
+        processData : false,
+        beforeSend : function(){
+          $(document).find(".form-text").text("");
+        },
+        success: function(data){
+
+            if(data.message == "error"){
+                $.each(data.data, function(key, value){
+                    $("#error"+key).text(value).css("color","red");
+                });
+            }
+
+            if(data.customerReglogin == true){
+                window.location = "{{url('/dashboard')}}";
+            }else if(data.login == false){
+                $("#msg").text(data.message);
+            }
+
+            
+        }
+
+      });
+
+      return false;
+
+    });
+
+
+</script>
 
 <script>
-    $(document).ready(function () {
-        $(window).scroll(function () {
+    $(".chbox").click(function() {
+
+        var saleData = [];
+        var buyData = [];
+        var rentData = [];
+
+        $("input:checkbox[name=mycheckbox]:checked").each(function() {
+
+            if ($(this).attr("data-type") == "sale") {
+                saleData.push($(this).val())
+            } else if ($(this).attr("data-type") == "buy") {
+                buyData.push($(this).val())
+            } else if ($(this).attr("data-type") == "rent") {
+                rentData.push($(this).val())
+            }
+        });
+
+        $.ajax({
+            url: "{{ route('allFiltering.allfiltering') }}",
+            method: "get",
+            data: {
+                "saleData": saleData,
+                "buyData": buyData,
+                "rentData": rentData
+            },
+            success: function(data) {
+
+                if (data.saleType == true || data.buyType == true || data.rentType == true) {
+
+                    $("#all_section_filter_disable").css("display", "none");
+                    $("#all_section_filter_enable").css("display","block");
+                    var htmlData = "";
+                    $("#allAdd").html("");
+
+                    if (data.saleType == true) {
+                        $.each(data.saleData, function(key, value) {
+
+                            htmlData += `<div class="col-lg-4 col-sm-6 col-xs-6 my-2">
+                            <div class="mt-4"><a href="">
+                                    <img src="{{ asset('images/sales/${value.image}') }}" alt=""
+                                        class="saleimg">
+                                </a>
+                            </div>
+                            </div>`;
+                        });
+                    }
+
+                    if (data.buyType == true) {
+                        $.each(data.buy_ads, function(key, value) {
+                            htmlData += `<div class="col-lg-4 col-sm-6 col-xs-6 my-2">
+                            <div class="mt-4"><a href="">
+                                    <img src="{{ asset('images/buy_ad/${value.image}') }}" alt=""
+                                        class="saleimg">
+                                </a>
+                            </div>
+                            </div>`;
+                        });
+                    }
+
+
+                    if (data.rentType == true) {
+                        $.each(data.rent_ads, function(key, value) {
+                            htmlData += `<div class="col-lg-4 col-sm-6 col-xs-6 my-2">
+                            <div class="mt-4"><a href="">
+                                    <img src="{{ asset('images/rent_ad/${value.image}') }}" alt=""
+                                        class="saleimg">
+                                </a>
+                            </div>
+                            </div>`;
+                        });
+                    }
+
+                    $("#allAdd").append(htmlData)
+
+                } else {
+                    $("#all_section_filter_disable").css("display", "block");
+                    $("#all_section_filter_enable").css("display","none");
+                }
+
+            }
+        });
+
+    });
+</script>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "170px";
+        document.getElementById("main").style.marginLeft = "5px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $(window).scroll(function() {
             if (this.scrollY > 10) {
                 $('.sidebar').addClass("sticky");
             } else {
@@ -34,8 +365,8 @@
 </script>
 
 <script>
-    $(document).ready(function () {
-        $(window).scroll(function () {
+    $(document).ready(function() {
+        $(window).scroll(function() {
             if (this.scrollY > 10) {
                 $('.sidebar-r').addClass("sticky");
             } else {
@@ -72,43 +403,43 @@
 
 <!-- For Sale Section -->
 <script>
-    $(document).ready (function () {
-      $(".content").slice(0, 4).show();
-      $("#loadMore").on("click", function(e){
-        e.preventDefault();
-        $(".content:hidden").slice(0, 4).slideDown();
-        if ($(".content:hidden").length == 0) {
-          $("#loadMore").text("No Content").addClass("noContent");
-        }
-      });
-      })
+    $(document).ready(function() {
+        $(".content").slice(0, 4).show();
+        $("#loadMore").on("click", function(e) {
+            e.preventDefault();
+            $(".content:hidden").slice(0, 4).slideDown();
+            if ($(".content:hidden").length == 0) {
+                $("#loadMore").text("No Content").addClass("noContent");
+            }
+        });
+    })
 </script>
 <!-- For Buy Section -->
- <script>
-    $(document).ready (function () {
-      $(".contentBuy").slice(0, 4).show();
-      $("#loadMoreBuy").on("click", function(e){
-        e.preventDefault();
-        $(".contentBuy:hidden").slice(0, 4).slideDown();
-        if ($(".contentBuy:hidden").length == 0) {
-          $("#loadMoreBuy").text("No Content").addClass("noContent");
-        }
-      });
-      })
+<script>
+    $(document).ready(function() {
+        $(".contentBuy").slice(0, 4).show();
+        $("#loadMoreBuy").on("click", function(e) {
+            e.preventDefault();
+            $(".contentBuy:hidden").slice(0, 4).slideDown();
+            if ($(".contentBuy:hidden").length == 0) {
+                $("#loadMoreBuy").text("No Content").addClass("noContent");
+            }
+        });
+    })
 </script>
 
- <!-- For Rent Section -->
- <script>
-    $(document).ready (function () {
-      $(".contentRent").slice(0, 4).show();
-      $("#loadMoreRent").on("click", function(e){
-        e.preventDefault();
-        $(".contentRent:hidden").slice(0, 4).slideDown();
-        if ($(".contentRent:hidden").length == 0) {
-          $("#loadMoreRent").text("No Content").addClass("noContent");
-        }
-      });
-      })
+<!-- For Rent Section -->
+<script>
+    $(document).ready(function() {
+        $(".contentRent").slice(0, 4).show();
+        $("#loadMoreRent").on("click", function(e) {
+            e.preventDefault();
+            $(".contentRent:hidden").slice(0, 4).slideDown();
+            if ($(".contentRent:hidden").length == 0) {
+                $("#loadMoreRent").text("No Content").addClass("noContent");
+            }
+        });
+    })
 </script>
 
 <script>
@@ -149,7 +480,6 @@
             $('body').removeClass("typed-search-box-shown");
         }
     }
-
 </script>
 
 <script>
@@ -181,23 +511,20 @@
 </script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
-if($('.bbb_viewed_slider').length)
-{
-    var viewedSlider = $('.bbb_viewed_slider');
+        if ($('.bbb_viewed_slider').length) {
+            var viewedSlider = $('.bbb_viewed_slider');
 
-    viewedSlider.owlCarousel(
-        {
-            
-        loop:true,
-        margin:30,
-        // autoplay:true,
-        autoplayTimeout:1500,
-        nav:false,
-        dots:false,
-        responsive:
-            {
+            viewedSlider.owlCarousel({
+
+                loop: true,
+                margin: 30,
+                autoplay:true,
+                autoplayTimeout: 1500,
+                nav: false,
+                dots: false,
+                responsive: {
                     // 0:{items:1},
                     // 575:{items:3},
                     // 767:{items:3},
@@ -205,113 +532,126 @@ if($('.bbb_viewed_slider').length)
                     // 992:{items:4},
                     // 1025:{items:5}
 
-                    0:{items:2},
-                    575:{items:3},
-                    767:{items:3},
-                    768:{items:4},
-                    992:{items:4},
-                    1370:{items:5}
+                    0: {
+                        items: 2
+                    },
+                    575: {
+                        items: 3
+                    },
+                    767: {
+                        items: 3
+                    },
+                    768: {
+                        items: 4
+                    },
+                    992: {
+                        items: 4
+                    },
+                    1370: {
+                        items: 5
+                    }
                 }
-        });
+            });
 
-    if($('.bbb_viewed_prev').length)
-    {
-        var prev = $('.bbb_viewed_prev');
-        prev.on('click', function()
-        {
-            viewedSlider.trigger('prev.owl.carousel');
-        });
-    }
+            if ($('.bbb_viewed_prev').length) {
+                var prev = $('.bbb_viewed_prev');
+                prev.on('click', function() {
+                    viewedSlider.trigger('prev.owl.carousel');
+                });
+            }
 
-    if($('.bbb_viewed_next').length)
-    {
-        var next = $('.bbb_viewed_next');
-        next.on('click', function()
-        {
-            viewedSlider.trigger('next.owl.carousel');
-        });
-    }
-}
+            if ($('.bbb_viewed_next').length) {
+                var next = $('.bbb_viewed_next');
+                next.on('click', function() {
+                    viewedSlider.trigger('next.owl.carousel');
+                });
+            }
+        }
 
 
-});
+    });
 </script>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function() {
 
-if($('.bbb_viewed_slider_2').length)
-{
-var viewedSlider = $('.bbb_viewed_slider_2');
+        if ($('.bbb_viewed_slider_2').length) {
+            var viewedSlider = $('.bbb_viewed_slider_2');
 
-viewedSlider.owlCarousel(
-    {
-        loop:true,
-        margin:30,
-        // autoplay:true,
-        autoplayTimeout:2000,
-        nav:false,
-        dots:false,
-        responsive:
-            {
+            viewedSlider.owlCarousel({
+                loop: true,
+                margin: 30,
+                autoplay:true,
+                autoplayTimeout: 2000,
+                nav: false,
+                dots: false,
+                responsive: {
 
-                    0:{items:2},
-                    575:{items:3},
-                    767:{items:3},
-                    768:{items:4},
-                    992:{items:4},
-                    1370:{items:5}
+                    0: {
+                        items: 2
+                    },
+                    575: {
+                        items: 3
+                    },
+                    767: {
+                        items: 3
+                    },
+                    768: {
+                        items: 4
+                    },
+                    992: {
+                        items: 4
+                    },
+                    1370: {
+                        items: 5
+                    }
 
                     // 0:{items:1},
                     // 575:{items:2},
                     // 768:{items:3},
                     // 991:{items:3},
                     // 1199:{items:5}
+                }
+            });
+
+            if ($('.bbb_viewed_prev_2').length) {
+                var prev = $('.bbb_viewed_prev_2');
+                prev.on('click', function() {
+                    viewedSlider.trigger('prev.owl.carousel');
+                });
             }
+
+            if ($('.bbb_viewed_next_2').length) {
+                var next = $('.bbb_viewed_next_2');
+                next.on('click', function() {
+                    viewedSlider.trigger('next.owl.carousel');
+                });
+            }
+        }
+
+
     });
-
-if($('.bbb_viewed_prev').length)
-{
-    var prev = $('.bbb_viewed_prev');
-    prev.on('click', function()
-    {
-        viewedSlider.trigger('prev.owl.carousel');
-    });
-}
-
-if($('.bbb_viewed_next').length)
-{
-    var next = $('.bbb_viewed_next');
-    next.on('click', function()
-    {
-        viewedSlider.trigger('next.owl.carousel');
-    });
-}
-}
-
-
-});
 </script>
 
 
 <script>
-function change() {
-let results = Array.from(document.querySelectorAll('.result > div'));
-// Hide all results
-results.forEach(function(result) {
-    result.style.display = 'none';
-});
-// Filter results to only those that meet ALL requirements:
-Array.from(document.querySelectorAll('.filter input[rel]:checked'), function(input) {
-    const attrib = input.getAttribute('rel');
-    results = results.filter(function(result) {
-    return result.classList.contains(attrib);
-    });
-});
-// Show those filtered results:
-results.forEach(function(result) {
-    result.style.display = 'block';
-});
-}
-change();
+    function change() {
+        let results = Array.from(document.querySelectorAll('.result > div'));
+        // Hide all results
+        results.forEach(function(result) {
+            result.style.display = 'none';
+        });
+        // Filter results to only those that meet ALL requirements:
+        Array.from(document.querySelectorAll('.filter input[rel]:checked'), function(input) {
+            const attrib = input.getAttribute('rel');
+            results = results.filter(function(result) {
+                return result.classList.contains(attrib);
+            });
+        });
+        // Show those filtered results:
+        results.forEach(function(result) {
+            result.style.display = 'block';
+        });
+    }
+    change();
 </script>

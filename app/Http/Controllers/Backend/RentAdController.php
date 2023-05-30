@@ -17,7 +17,8 @@ class RentAdController extends Controller
      */
     public function index()
     {
-        //
+        $rents = RentAd::all();
+        return view('backend.pages.rents.manage',compact('rents'));
     }
 
     /**
@@ -27,7 +28,7 @@ class RentAdController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.rents.add');
     }
 
     /**
@@ -38,6 +39,7 @@ class RentAdController extends Controller
      */
     public function store(RentAdFormRequest $request)
     {
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $img = time() . '.' . $image->getClientOriginalExtension();
@@ -62,7 +64,7 @@ class RentAdController extends Controller
         }
 
 
-        return back()->with('success', 'BuyAds add successfully.');
+        return back()->with('success', 'Rent ads add successfully.');
     }
 
     /**

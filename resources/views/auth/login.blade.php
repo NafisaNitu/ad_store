@@ -37,32 +37,38 @@
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form method="POST" action="{{ route('login') }}">
+
+                <form method="post" id="myForm" autocomplete="off">
                     @csrf
                     <div class="login-form-head">
                         <img src="{{ asset('frontend/assets/images/logo.png') }}" 
                         alt="Sobkisubazar" class="mw-120 h-51px h-md-51px">
                     </div>
                     <div class="login-form-body">
+
+                        <p style="margin-top: 5px;margin-bottom: 17px;text-align: center;color: red;" id="msg"></p>
+
                         <div class="form-gp">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" id="exampleInputEmail1" >
+                            <input type="email" name="email" id="exampleInputEmail1">
                             <i class="ti-email"></i>
+                            <small class="form-text" id="erremail"></small>
                         </div>
                         <div class="form-gp">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" id="exampleInputPassword1">
                             <i class="ti-lock"></i>
+                            <small class="form-text" id="errpassword"></small>
                         </div>
                         <div class="row mb-4 rmber-area">
                             <div class="col-6">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="remember" value="true">
                                     <label class="custom-control-label" for="customControlAutosizing">Remember Me</label>
                                 </div>
                             </div>
                             <div class="col-6 text-right">
-                                <a href="{{ route('password.request') }}">Forgot Password?</a>
+                                <a href="">Forgot Password?</a>
                             </div>
                         </div>
                         <div class="submit-btn-area">
@@ -76,9 +82,9 @@
                                 </div>
                             </div> --}}
                         </div>
-                        {{-- <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Don't have an account? <a href="{{ route('register') }}">Sign up</a></p>
-                        </div> --}}
+                        <div class="form-footer text-center mt-5">
+                            <p class="text-muted">Don't have an account? <a href="">Sign up</a></p>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -99,6 +105,52 @@
     <!-- others plugins -->
     <script src="{{ asset('backend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
+
+    <script type="text/javascript">
+
+
+    $("#myForm").submit(function(){
+
+        
+
+      var form = $("#myForm").get(0);
+
+      $.ajax({
+        url : "{{route('admin_login.adminlogin')}}",
+        method: "post",
+        data : new FormData(form),
+        contentType : false,
+        processData : false,
+        beforeSend : function(){
+          $(document).find(".form-text").text("");
+        },
+        success: function(data){
+
+            if(data.message == "error"){
+                $.each(data.data, function(key, value){
+                    $("#err"+key).text(value);
+                });
+            }
+
+            if(data.login == true){
+                window.location = "{{Route('admin.dashboard')}}";
+            }else if(data.login == false){
+                $("#msg").text(data.message);
+            }
+
+            
+        }
+
+      });
+
+      return false;
+
+    });
+
+    
+
+
+    </script>
 </body>
 
 </html>

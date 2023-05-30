@@ -75,9 +75,9 @@
                                 </div>
                             </div> --}}
                         </div>
-                        {{-- <div class="form-footer text-center mt-5">
+                        <div class="form-footer text-center mt-5">
                             <p class="text-muted">Already have an account? <a href="{{ route('login') }}">Sign in</a></p>
-                        </div> --}}
+                        </div>
                     </div>
                 </form>
             </div>

@@ -48,9 +48,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="mb-4">
-                        <h1 class="adstore-header-text">Hello, Welcome to our ad store.<br />
+                        <h1 class="adstore-header-text text-center">Hello, Welcome to our ad store.<br />
                             We are delighted to have you as our customer</h1>
-                        <h2 class="adstore-header-text-2 mt-4 mb-5">For Post Your Ad, Please Select an Option Below</h3>
+                        <h2 class="adstore-header-text-2 mt-4 mb-5 text-center">For Post Your Ad, Please Select an Option Below</h3>
                     </div>
 
                     <div class="row justify-content-between">

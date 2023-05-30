@@ -8,7 +8,7 @@
                 <div class="col-lg-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">All Sales Ads Product</h4>
+                            <h4 class="header-title">All Sale Ads Product</h4>
                             <div class="data-tables">
                                 <table id="dataTable" class="text-center">
                                     <thead class="bg-light text-capitalize">

@@ -15,11 +15,7 @@
                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></h4>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
-                    <form method="POST" action="{{ route('logout') }}">
-                          @csrf
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            this.closest('form').submit();" class="nav-link">Log Out</a>
-                    </form>
+                    <a class="dropdown-item" href="{{ route('admin_logout.logout') }}">Logout</a>
                 </div>
             </div>
         </div>

@@ -17,7 +17,8 @@ class BuyAdController extends Controller
      */
     public function index()
     {
-        //
+        $buys = BuyAd::all();
+        return view('backend.pages.buys.manage',compact('buys'));
     }
 
     /**
@@ -27,7 +28,7 @@ class BuyAdController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.buys.add');
     }
 
     /**
@@ -38,31 +39,35 @@ class BuyAdController extends Controller
      */
     public function store(BuyAdFormRequest $request)
     {
+            if ($request->hasFile('image')) {
+                //image
+                $image = $request->file('image');
+                $img = time() . '.' . $image->getClientOriginalExtension();
+                $location = public_path('images/buy_ad/' . $img);
+                Image::make($image)->resize(570, 230)->save($location);
+    
+                // banner
+                if ($request->banner) {
+                    $banner_image  = $request->file('banner');
+                    $banner =date('YmdHisa'). time() . '.' . $banner_image->getClientOriginalExtension();
+                    $location_banner = public_path('images/buy_ad/' . $banner);
+                    Image::make($banner_image)->resize(1170, 400)->save($location_banner);
+                }
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $img = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/buy_ad/' . $img);
-            Image::make($image)->resize(570, 230)->save($location);
-            // banner
-            if ($request->banner) {
-                $banner_image  = $request->file('banner');
-                $banner = date('YmdHisa') . time() . '.' . $banner_image->getClientOriginalExtension();
-                $location_banner = public_path('images/buy_ad/' . $banner);
-                Image::make($banner_image)->resize(1170, 400)->save($location_banner);
-            }
-            $buy_add = new BuyAd();
-            $buy_add->type = $request->type;
-            $buy_add->name = $request->name;
-            $buy_add->description = $request->description;
-            $buy_add->image = $img;
-            $buy_add->banner = $banner ?? '';
-            $buy_add->save();
+            $buy = new BuyAd();
+            $buy->type = $request->type;
+            $buy->name = $request->name;
+            $buy->description = $request->description;
+            $buy->image = $img;
+            $buy->banner = $banner ?? '';
+            $buy->save();
+        }
+            return back()->with('success', 'Buys add successfully.');
+
+
         }
 
 
-        return back()->with('success', 'BuyAds add successfully.');
-    }
 
     /**
      * Display the specified resource.
@@ -70,10 +75,10 @@ class BuyAdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -81,10 +86,10 @@ class BuyAdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -93,10 +98,10 @@ class BuyAdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -104,8 +109,8 @@ class BuyAdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }

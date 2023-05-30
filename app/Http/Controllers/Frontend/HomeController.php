@@ -57,8 +57,9 @@ class HomeController extends Controller
             ];
         }
         $sales = Sale::orderBy('id', 'desc')->paginate(4);
-        $buy_ads = BuyAd::all();
-        $rent_ads = RentAd::all();
+        $buy_ads = BuyAd::orderBy('id', 'desc')->paginate(4);
+        $rent_ads = RentAd::orderBy('id', 'desc')->paginate(4);
+
         return view('frontend.pages.index', compact('data', 'platinum_data', 'advertisement_data','ad_stores_data','sales','buy_ads','rent_ads'));
     }
     public function adstore()
@@ -87,5 +88,50 @@ class HomeController extends Controller
     public function showRent($id){
         $rentItem = RentAd::find($id);
         return view('frontend.pages.rent-details', compact('rentItem'));
+    }
+
+    public function allFiltering(Request $request){
+
+        
+        $saleData = null;
+        $buy_ads = null;
+        $rent_ads = null;
+
+
+        $saleType = false;
+        $buyType = false;
+        $rentType = false;
+
+
+
+        if($request->saleData != "" && count($request->saleData)){
+            $saleData = Sale::whereIn('type', $request->saleData)->get();
+            $saleType = true;
+        }
+
+        if($request->buyData != "" && count($request->buyData)){
+            $buy_ads = BuyAd::whereIn('type', $request->buyData)->get();
+            $buyType = true;
+        }
+
+
+        if($request->rentData != "" && count($request->rentData)){
+            $rent_ads = RentAd::whereIn('type', $request->rentData)->get();
+            $rentType = true;
+        }
+
+
+        return response()->json([
+            'saleData' => $saleData,
+            'saleType' => $saleType,
+
+            'buy_ads' => $buy_ads,
+            'buyType' => $buyType,
+
+            'rent_ads' => $rent_ads,
+            'rentType' => $rentType
+
+        ]);
+
     }
 }

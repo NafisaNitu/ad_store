@@ -10,7 +10,7 @@
                      <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
                          <a class="d-block py-2 mr-3 ml-0" href="https://sobkisubazar.com">
                              <img src="{{ asset('frontend/assets/images/logo.png') }}" 
-                                alt="Sobkisubazar" class="mw-120 h-40px h-md-51px">
+                                alt="Sobkisubazar" class="mw-120 h-30px h-md-60px">
                          </a>
 
                         
@@ -27,18 +27,18 @@
                                 <div class="px-4">
                                     <div class="aiz-checkbox-list">
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="product" value="product">
+                                            <input type="checkbox" name="product" class="chbox" value="product">
                                             <span class="aiz-square-check"></span>
                                             <a href="#saleProduct"><span class="fs-13 fs-md-13">Product</span></a>
                                         </label>
 
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="property" value="property">
+                                            <input type="checkbox" name="property" class="chbox" value="property">
                                             <span class="aiz-square-check"></span>
                                             <a href="#saleProperty"><span class="fs-13 fs-md-13">Property</span></a>
                                         </label>
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="service" value="service" onchange="filter()">
+                                            <input type="checkbox" name="service" class="chbox" value="service" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <a href="#saleService"><span class="fs-13 fs-md-13">Service</span></a>
 
@@ -53,17 +53,17 @@
                                 <div class="px-4">
                                     <div class="aiz-checkbox-list">
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="Product" value="Product" onchange="filter()">
+                                            <input type="checkbox" name="Product" class="chbox" value="Product" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">Product</span>
                                         </label>
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="Property" value="Property" onchange="filter()">
+                                            <input type="checkbox" name="Property" class="chbox" value="Property" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">Property</span>
                                         </label>
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="Service" value="Service" onchange="filter()">
+                                            <input type="checkbox" name="Service" class="chbox" value="Service" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">Service</span>
                                         </label>
@@ -78,17 +78,17 @@
                                 <div class="px-4">
                                     <div class="aiz-checkbox-list">
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="ForRent" value="ForRent" onchange="filter()">
+                                            <input type="checkbox" name="ForRent" class="chbox" value="ForRent" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">For Rent</span>
                                         </label>
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="ToRent" value="ToRent" onchange="filter()">
+                                            <input type="checkbox" name="ToRent" class="chbox" value="ToRent" onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">To Rent</span>
                                         </label>
                                         <label class="aiz-checkbox">
-                                            <input type="checkbox" name="CorporateAds" value="CorporateAds"
+                                            <input type="checkbox" name="CorporateAds" class="chbox" value="CorporateAds"
                                                 onchange="filter()">
                                             <span class="aiz-square-check"></span>
                                             <span class="fs-13 fs-md-13">Corporate Ads</span>
@@ -149,19 +149,25 @@
                             </li>
                         </ul>
                      </div>
- 
-                     <div class="d-lg-block ml-3 mr-0">
-                        <ul class="list-inline mb-0 mobile-hor-swipe text-center">
-                            <li class="list-inline-item mr-0 py-1">
-                                <a
-                                    href="#"
-                                    class="ad-menu px-2 py-2 d-inline-block text-reset">
-                                    <span class="menu-text-hover">Support</span>
-                                </a>
-                            </li>
-                        </ul>
-                     </div>
 
+                     @if(Auth::guard('customer')->check())
+                         <li class="list-inline-item mr-0 py-1">
+                            <a
+                                href="{{Route('logout')}}"
+                                class="ad-menu px-2 py-2 d-inline-block text-reset">
+                                <span class="menu-text-hover">Logout</span>
+                            </a>
+                        </li>
+                    @else
+                        <li class="list-inline-item mr-0 py-1">
+                        <a
+                            href="{{Route('customer.login')}}"
+                            class="ad-menu px-2 py-2 d-inline-block text-reset">
+                            <span class="menu-text-hover">Login</span>
+                        </a>
+                    </li>
+                    @endif
+ 
                     @if (Route::has('login'))
                         <ul class="list-inline mb-0 mobile-hor-swipe text-center">
                             @auth

@@ -2,7 +2,7 @@
 <div class="sidebar-menu">
     <div class="sidebar-header">
         <div class="logo">
-            <a href="index.html"><img src="{{ asset('backend/assets/images/icon/logo.png') }}" alt="logo"></a>
+            <a href="index.html"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt="logo"></a>
         </div>
     </div>
     <div class="main-menu">
@@ -11,15 +11,44 @@
                 <ul class="metismenu" id="menu">
                     <li class="active">
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                        <ul class="collapse">
-                            <li class="active"><a href="index.html">dashboard</a></li>
-                        </ul>
+                       
                     </li>
+
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i><span>Sales</span></a>
                         <ul class="collapse">
-                            <li><a href="{{ route('sale-add.index') }}">Add New Sale Ad</a></li>
-                            <li><a href="{{ route('sale-add.create') }}">All Sale Ads</a></li>
+                            <li><a href="{{ route('sale-add.create') }}">Add New Sale Ad</a></li>
+                            <li><a href="{{ route('sale-add.index') }}">All Sale Ads</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i><span>Payment</span></a>
+                        <ul class="collapse">
+                            <li><a href="{{ route('paymentlist.customerPaymentList') }}">Payment List</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i><span>Ad Request</span></a>
+                        <ul class="collapse">
+                            <li><a href="{{ route('adlist.customerAdList') }}">Request List</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Buy</span></a>
+                        <ul class="collapse">
+                            <li><a href="{{ route('buy-add.create') }}">Add New Buy Ad</a></li>
+                            <li><a href="{{ route('buy-add.index') }}">All Buy Ads</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Rent</span></a>
+                        <ul class="collapse">
+                            <li><a href="{{ route('rent-add.create') }}">Add New Rent Ad</a></li>
+                            <li><a href="{{ route('rent-add.index') }}">All Rent Ads</a></li>
                         </ul>
                     </li>
                     {{-- <li>
